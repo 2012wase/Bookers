@@ -1,89 +1,13 @@
-<p id="notice"></p>
 <h1>Books</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-    <tbody>
-      <tr>
-        <td>リーダブルコード</td>
-        <td>より良いコードを書くためのシンプルで実践的なテクニック</td>
-        <td><a class="show_16319" href="/books/16319">Show</a></td>
-        <td><a class="edit_16319" href="/books/16319/edit">Edit</a></td>
-        <td><a data-confirm="Are you sure?" class="destroy_16319" rel="nofollow" data-method="delete" href="/books/16319">Destroy</a></td>
-      </tr>
-      <tr>
-        <td>トラブル知らずのシステム設計</td>
-        <td>システム設計の要点を図解で説明してくれます</td>
-        <td><a class="show_16320" href="/books/16320">Show</a></td>
-        <td><a class="edit_16320" href="/books/16320/edit">Edit</a></td>
-        <td><a data-confirm="Are you sure?" class="destroy_16320" rel="nofollow" data-method="delete" href="/books/16320">Destroy</a></td>
-      </tr>
-      <tr>
-        <td>たのしいRuby</td>
-        <td>Rubyの入門におすすめです</td>
-        <td><a class="show_16321" href="/books/16321">Show</a></td>
-        <td><a class="edit_16321" href="/books/16321/edit">Edit</a></td>
-        <td><a data-confirm="Are you sure?" class="destroy_16321" rel="nofollow" data-method="delete" href="/books/16321">Destroy</a></td>
-      </tr>
-      <tr>
-        <td>入門Git</td>
-        <td>gitについての基本操作から内部構造まで解説してくれます</td>
-        <td><a class="show_16322" href="/books/16322">Show</a></td>
-        <td><a class="edit_16322" href="/books/16322/edit">Edit</a></td>
-        <td><a data-confirm="Are you sure?" class="destroy_16322" rel="nofollow" data-method="delete" href="/books/16322">Destroy</a></td>
-      </tr>
-      <tr>
-        <td>アルゴリズム図鑑</td>
-        <td>アルゴリズムについてカラーイラストでしっかり解説してくれます</td>
-        <td><a class="show_16323" href="/books/16323">Show</a></td>
-        <td><a class="edit_16323" href="/books/16323/edit">Edit</a></td>
-        <td><a data-confirm="Are you sure?" class="destroy_16323" rel="nofollow" data-method="delete" href="/books/16323">Destroy</a></td>
-      </tr>
-      <tr>
-        <td>達人プログラマー</td>
-        <td>プログラマ入門者は必読！</td>
-        <td><a class="show_16324" href="/books/16324">Show</a></td>
-        <td><a class="edit_16324" href="/books/16324/edit">Edit</a></td>
-        <td><a data-confirm="Are you sure?" class="destroy_16324" rel="nofollow" data-method="delete" href="/books/16324">Destroy</a></td>
-      </tr>
-      <tr>
-        <td>データベース実践入門</td>
-        <td>効率的なSQL文を教えてくれます</td>
-        <td><a class="show_16325" href="/books/16325">Show</a></td>
-        <td><a class="edit_16325" href="/books/16325/edit">Edit</a></td>
-        <td><a data-confirm="Are you sure?" class="destroy_16325" rel="nofollow" data-method="delete" href="/books/16325">Destroy</a></td>
-      </tr>
-  </tbody>
-</table>
+<% @books.each do |book| %>
+  <p>Title</p>
+  <span><%= book.title %></span>
+  <p>Body</p>
+    <span><%= book.body %></span>
+<% end %>
 
 <h2>New book</h2>
-<form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="a3x7IRpHC1bS0T3+gEz+vAenpz4Vea4CapD4QmIy2QWKa6BeylwO73mfq9pYEEpMDqwRbARDpSmtx+XyVmUHzg==" />
-
-  <div class="field">
-    <label for="book_title">Title</label>
-    <input class="book_title" type="text" name="book[title]" id="book_title" />
-  </div>
-
-  <div class="field">
-    <label for="book_body">Body</label>
-    <textarea class="book_body" name="book[body]" id="book_body">
-</textarea>
-  </div>
-
-  <div class="actions">
-    <input type="submit" name="commit" value="Create Book" data-disable-with="Create Book" />
-  </div>
-</form>
-  </body>
-</html>
-
-<!-- form_with部分 
+<!-- form_with部分 -->
 <%= form_with model: @book, url:'/books', local:true do |f| %>
   <h4>Title</h4>
   <%= f.text_field :title %>
@@ -91,8 +15,3 @@
   <%= f.text_area :body %>
   <%= f.submit 'Create Book' %>
 <% end %>
-
- <% @books.each do |book| %>
-  <span><%= book.title %></span>
-<% end %>
--->

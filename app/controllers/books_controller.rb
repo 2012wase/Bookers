@@ -12,9 +12,9 @@ class BooksController < ApplicationController
   end
   
   def create
-      book = Book.new(book_params)
+    book = Book.new(book_params)
     book.save
-    redirect_to books_path
+    redirect_to '/show'
   end
 
   def edit
